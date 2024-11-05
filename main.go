@@ -42,6 +42,7 @@ func main() {
 
 	// Start server on port 8000
 	log.Fatal(http.ListenAndServe(":8000", router))
+
 }
 func getUsers(w http.ResponseWriter, r *http.Request) {
 	var users []User
@@ -119,6 +120,7 @@ func updateUser(w http.ResponseWriter, r *http.Request) {
 	}
 	//user.ID = int(id)
 	user.ID, err = strconv.Atoi(id)
+
 	user.CreatedAt = "now" // Placeholder
 	json.NewEncoder(w).Encode(user)
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -24,7 +25,7 @@ var db *sql.DB
 func main() {
 	// Initialize database connection
 	var err error
-	db, err = sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/go_crud_api")
+	db, err = sql.Open("mysql", "root:Grvn240675$$@tcp(127.0.0.1:3306)/go_crud_api")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -40,6 +41,7 @@ func main() {
 	router.HandleFunc("/user/{id}", updateUser).Methods("PUT")    // Update a user by ID
 	router.HandleFunc("/user/{id}", deleteUser).Methods("DELETE") // Delete a user by ID
 
+	fmt.Println("API run on port 8000")
 	// Start server on port 8000
 	log.Fatal(http.ListenAndServe(":8000", router))
 
